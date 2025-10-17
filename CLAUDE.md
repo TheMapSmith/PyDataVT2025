@@ -99,6 +99,15 @@ Focus on demonstrating tools such as:
 
 ## Prompt History & Documentation
 
+### Start-of-Prompt Workflow
+**CRITICAL**: At the beginning of each prompt, Claude must:
+1. **Re-read CLAUDE.md**: To refresh guidelines and any updates made by the user
+2. **Re-read PROMPT_HISTORY.md**: To understand the context and get the next prompt number
+3. **Re-read any files being worked on**: Files may have been modified by the user between prompts
+4. **Never assume file contents**: Always use the Read tool to get current state before making edits
+
+This ensures Claude always has the most up-to-date context, as the user may modify files intermittently between prompts.
+
 ### Maintaining PROMPT_HISTORY.md
 After each prompt, Claude will update `PROMPT_HISTORY.md` with:
 - **Prompt Number**: Sequential numbering for reference

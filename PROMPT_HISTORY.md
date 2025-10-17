@@ -64,9 +64,39 @@ This document tracks all interactions with Claude Code during the development of
 
 ---
 
+## Prompt #3
+**Date/Time**: 2025-10-17
+
+**User Request**:
+> i will be working on the files intermittently and your memory of a file will be outdated. add to the instructions that rereading files at the start each prompt is required
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md) to get current state (following new workflow)
+- Added new section "Start-of-Prompt Workflow" to [CLAUDE.md](CLAUDE.md) with critical requirements:
+  - Must re-read CLAUDE.md at start of each prompt
+  - Must re-read PROMPT_HISTORY.md to get context and next prompt number
+  - Must re-read any files being worked on (user may modify between prompts)
+  - Never assume file contents - always use Read tool first
+- Updated [PROMPT_HISTORY.md](PROMPT_HISTORY.md) to document this prompt
+
+**Files Modified/Created**:
+- `CLAUDE.md` (modified - added Start-of-Prompt Workflow section)
+- `PROMPT_HISTORY.md` (modified - added Prompt #3 entry)
+
+**Token Usage**:
+- Input tokens: ~4,000
+- Output tokens: ~1,200
+- Total: ~5,200 tokens
+
+**Estimated Cost**: ~$0.03 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~7,800
-- **Total estimated cost**: ~$0.06 USD
+- **Total tokens used**: ~13,000
+- **Total estimated cost**: ~$0.09 USD
 
 ---
 
