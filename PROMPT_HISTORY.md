@@ -8,7 +8,7 @@ This document tracks all interactions with Claude Code during the development of
 **Date/Time**: 2025-10-17 (Session Start)
 
 **User Request**:
-Create a CLAUDE.md file with guidelines for Claude Code assistance on a geospatial Python technical demo for a conference. The project should be developed openly and transparently, acknowledging AI assistance.
+> You will help me design a technical demo for a conference. the focus is on using geospatial python tools. we will create a jupyter notebook to demonstrate a variety of different python workflows. this work will be public in a github repository so attendees can review afterward. i want to work openly and transparently, including the fact that i'm using claude code. write a CLAUDE.md file that will be reviewed with each prompt with instructions for helping me with this.
 
 **Actions Taken**:
 - Created [CLAUDE.md](CLAUDE.md) with comprehensive guidelines covering:
@@ -39,11 +39,7 @@ Create a CLAUDE.md file with guidelines for Claude Code assistance on a geospati
 **Date/Time**: 2025-10-17
 
 **User Request**:
-Update CLAUDE.md to include additional guidelines about:
-- Maintaining prompt history in a markdown document
-- Summarizing actions after each prompt
-- Logging token usage and cost for each prompt
-- Committing changes after each prompt for progression tracking and easy rollback
+> more things: Include prompt history in the repo, perhaps as a markdown doc. summarize actions taken by Claude after each prompt. if you can access this information, you can log the tokens and cost for each prompt as well.  you can also commit the changes after each prompt to show the progression and allow easy rollback.
 
 **Actions Taken**:
 - Updated [CLAUDE.md](CLAUDE.md) to add new section "Prompt History & Documentation"

@@ -103,7 +103,7 @@ Focus on demonstrating tools such as:
 After each prompt, Claude will update `PROMPT_HISTORY.md` with:
 - **Prompt Number**: Sequential numbering for reference
 - **Date/Time**: When the prompt was received
-- **User Request**: Summary of what was requested
+- **User Request**: Verbatim prompt from the user
 - **Actions Taken**: Bulleted list of all actions Claude performed
 - **Files Modified/Created**: List of files changed
 - **Token Usage**: Input and output tokens for the interaction (if available)
