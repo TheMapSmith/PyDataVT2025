@@ -130,7 +130,7 @@ User requested creation of a comprehensive Vermont geospatial workshop notebook 
 
 **Estimated Cost**: ~$0.07 USD
 
-**Commit SHA**: (pending)
+**Commit SHA**: fbda3e4
 
 ---
 
