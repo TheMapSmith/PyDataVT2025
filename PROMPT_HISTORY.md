@@ -31,7 +31,7 @@ Create a CLAUDE.md file with guidelines for Claude Code assistance on a geospati
 
 **Estimated Cost**: ~$0.02 USD (based on Sonnet 4.5 pricing)
 
-**Commit SHA**: (Pending - will commit after Prompt #2)
+**Commit SHA**: f418005
 
 ---
 
@@ -64,7 +64,7 @@ Update CLAUDE.md to include additional guidelines about:
 
 **Estimated Cost**: ~$0.04 USD (based on Sonnet 4.5 pricing: $3/MTok input, $15/MTok output)
 
-**Commit SHA**: (Pending)
+**Commit SHA**: f418005
 
 ---
 
