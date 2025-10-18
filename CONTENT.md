@@ -230,3 +230,96 @@ Let's see what attribute fields are available for each town.
 ### Exploring the Data
 
 Let's examine what we just downloaded. A GeoDataFrame is like a pandas DataFrame but with a special `geometry` column that stores shapes (polygons in this case).
+
+
+---
+
+## Key Takeaways - Interactive UI
+
+✅ **What we accomplished:**
+1. Created an interactive dropdown with all Vermont town names
+2. Implemented event-driven callback function for town selection
+3. Displayed detailed town information including attributes and geometry
+4. Calculated geographic properties (area, centroid, bounding box)
+5. Stored selected town data in global variables for use in subsequent steps
+
+💡 **Key Concepts:**
+- **ipywidgets** provides interactive UI components for Jupyter
+- **Event-driven programming**: Functions trigger automatically on user actions
+- **Callback functions**: Handle user interactions and update content dynamically
+- **Geometry properties**: `.area`, `.bounds`, `.centroid` from Shapely
+- **Unit conversions**: Converting between m², km², and acres
+
+🎯 **Best Practices Demonstrated:**
+- Type hints in function signatures for clarity
+- Docstrings explaining function purpose
+- Error handling for edge cases (no data found)
+- User-friendly formatting with visual separators
+- Multiple unit representations for accessibility
+
+🔜 **Next Steps:**
+In the next section, we'll visualize the selected town on an interactive map with the bedrock geology layer!
+
+---
+
+
+
+### Understanding the Code Above
+
+Let's break down what's happening in the interactive selector:
+
+**1. Global Variables**
+```python
+selected_town_data = None
+selected_town_name = None
+```
+These store the currently selected town so other cells can access it. This is a simple way to share state in notebooks.
+
+**2. Callback Function**
+```python
+def on_town_selected(town_name: str) -> None:
+```
+This function runs every time a user selects a town. It:
+- Filters the GeoDataFrame to get the selected town's data
+- Calculates geographic properties (area, centroid, bounds)
+- Displays formatted information
+
+**3. Area Calculations**
+```python
+area_sq_m = town.geometry.area
+area_sq_km = area_sq_m / 1_000_000
+area_acres = area_sq_m / 4046.86
+```
+Since our CRS uses meters, `.area` returns square meters. We convert to km² and acres for readability.
+
+**4. The `interact()` Function**
+```python
+interact(on_town_selected, town_name=town_dropdown)
+```
+This is the magic of ipywidgets! It:
+- Creates the UI automatically
+- Calls `on_town_selected()` whenever the dropdown changes
+- Passes the selected value as the `town_name` parameter
+
+**Try It Out!**
+Select different towns from the dropdown above. Notice how the information updates immediately!
+
+
+
+---
+
+## Step 3: Interactive Town Selector
+
+Now we'll create an interactive dropdown widget that lets users select a town and view its information. This demonstrates:
+- Using `ipywidgets` for interactive UI components
+- Event-driven programming in Jupyter notebooks
+- Filtering GeoDataFrames based on user input
+- Dynamic content updates
+
+### Why Interactive Widgets?
+
+Interactive widgets transform static notebooks into dynamic tools:
+- **User-friendly**: No need to edit code to change parameters
+- **Educational**: Great for exploration and "what-if" scenarios
+- **Presentation-ready**: Professional appearance for demos and workshops
+- **Reusable**: Easy for others to adapt for their own data
