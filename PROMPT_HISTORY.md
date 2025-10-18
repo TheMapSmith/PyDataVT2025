@@ -301,9 +301,41 @@ User requested to continue with the next step of the plan, noting changes made t
 
 ---
 
+## Prompt #8
+**Date/Time**: 2025-10-17
+
+**User Request**:
+User reported that the town selector interactive widget prints the selected town data three times.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Identified the issue: `interact()` was calling the callback multiple times during initialization
+- Fixed cell-10 in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb):
+  - Added `Output()` widget to capture display cleanly
+  - Created wrapper function `update_town_display()` that:
+    * Uses `output.clear_output(wait=True)` to clear previous content
+    * Calls `on_town_selected()` within the output context
+  - Displayed the output widget explicitly with `display(output)`
+- This fix ensures the town information displays only once per selection
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - fixed triple output issue in cell-10)
+- `PROMPT_HISTORY.md` (modified - added Prompt #8 entry)
+
+**Token Usage**:
+- Input tokens: ~7,800
+- Output tokens: ~800
+- Total: ~8,600 tokens
+
+**Estimated Cost**: ~$0.04 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~62,000
-- **Total estimated cost**: ~$0.35 USD
+- **Total tokens used**: ~70,600
+- **Total estimated cost**: ~$0.39 USD
 
 ---
 
