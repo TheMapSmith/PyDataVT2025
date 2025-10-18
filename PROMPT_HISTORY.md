@@ -257,9 +257,53 @@ User requested to continue adding to the notebook with the next step of the plan
 
 ---
 
+## Prompt #7
+**Date/Time**: 2025-10-17
+
+**User Request**:
+User requested to continue with the next step of the plan, noting changes made to the notebook, and specifically requesting new cells be inserted at the end of the notebook, not the beginning.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), [PLAN.md](PLAN.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Observed user's changes to notebook: cells were reordered and town name field manually set to "TOWNNAMEMC"
+- Implemented Step 3 from PLAN.md: Interactive Town Selector UI
+- Added 3 new cells to END of [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb):
+  - Markdown: Introduction to Step 3 explaining interactive widgets and their benefits
+  - Code: Interactive town selector with:
+    * Global variables for storing selected town state (`selected_town_data`, `selected_town_name`)
+    * `on_town_selected()` callback function that:
+      - Filters GeoDataFrame for selected town
+      - Displays all town attributes
+      - Calculates and displays area (m², km², acres)
+      - Shows bounding box coordinates
+      - Calculates and displays centroid
+    * Dropdown widget creation with all town names
+    * `interact()` call to wire up the UI
+  - Markdown: Code explanation breaking down:
+    * Global variables usage
+    * Callback function pattern
+    * Area calculation methodology
+    * How `interact()` creates automatic UI
+  - Markdown: Key takeaways section summarizing concepts and best practices
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - added Step 3 with 3 cells at END)
+- `PROMPT_HISTORY.md` (modified - added Prompt #7 entry)
+
+**Token Usage**:
+- Input tokens: ~10,200
+- Output tokens: ~1,800
+- Total: ~12,000 tokens
+
+**Estimated Cost**: ~$0.06 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~50,000
-- **Total estimated cost**: ~$0.29 USD
+- **Total tokens used**: ~62,000
+- **Total estimated cost**: ~$0.35 USD
 
 ---
 
