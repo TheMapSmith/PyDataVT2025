@@ -52,6 +52,7 @@ Focus on demonstrating tools such as:
 
 ### 6. Reproducibility
 - Specify all dependencies with versions (requirements.txt or environment.yml)
+- **Keep requirements.txt synchronized**: Whenever imported libraries change in notebook code, immediately update requirements.txt to reflect the changes
 - Test notebooks run top-to-bottom without errors
 - Document system requirements if applicable
 - Use relative paths for portability
