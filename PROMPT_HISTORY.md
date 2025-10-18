@@ -215,9 +215,51 @@ This document tracks all interactions with Claude Code during the development of
 
 ---
 
+## Prompt #6
+**Date/Time**: 2025-10-17
+
+**User Request**:
+User requested to continue adding to the notebook with the next step of the plan.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), [PLAN.md](PLAN.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Implemented Step 2 from PLAN.md: Data Fetching - Town Boundaries
+- Added 9 new cells to [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb):
+  - Markdown: Introduction to Step 2 with explanation of REST APIs and caching
+  - Code: `fetch_town_boundaries()` function with:
+    * Cache checking logic
+    * HTTP request to VCGI REST endpoint
+    * GeoJSON parsing
+    * CRS assignment (EPSG:32145)
+    * Error handling
+    * Cache save functionality
+  - Code: Basic dataset exploration (shape, CRS, geometry type, bounding box)
+  - Markdown: Explanation of examining attributes
+  - Code: Display all columns with types and sample values
+  - Markdown: Sample town data introduction
+  - Code: Display first 5 towns (excluding geometry for readability)
+  - Markdown: Town name list introduction
+  - Code: Auto-detect town name field and create sorted list
+  - Markdown: Key takeaways summarizing what was accomplished and concepts learned
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - added Step 2 with 9 cells)
+- `PROMPT_HISTORY.md` (modified - added Prompt #6 entry)
+
+**Token Usage**:
+- Input tokens: ~14,200
+- Output tokens: ~3,000
+- Total: ~17,200 tokens
+
+**Estimated Cost**: ~$0.09 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~32,800
-- **Total estimated cost**: ~$0.20 USD
+- **Total tokens used**: ~50,000
+- **Total estimated cost**: ~$0.29 USD
 
 ---
 
