@@ -182,7 +182,7 @@ This document tracks all interactions with Claude Code during the development of
 **Date/Time**: 2025-10-17
 
 **User Request**:
-User requested creation of requirements.txt file for the notebook and asked to add guideline to CLAUDE.md about updating requirements.txt when imported libraries change.
+> write the requirements.txt file for the notebook. add to CLAUDE.md that if the imported libraries change then update requirements.txt
 
 **Actions Taken**:
 - Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
