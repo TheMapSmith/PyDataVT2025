@@ -29,14 +29,14 @@ This notebook will demonstrate a complete geospatial workflow using Vermont GIS 
 ## Implementation Steps
 
 ### ✅ Step 1: Workshop Overview and Setup
-**Status**: Pending
+**Status**: Done
 - Create notebook introduction with learning objectives
 - List required libraries and versions
 - Explain the workflow and data sources
 - Include cell for environment setup and imports
 
 ### Step 2: Data Fetching - Town Boundaries
-**Status**: Pending
+**Status**: Done
 - Fetch town boundaries GeoJSON from VCGI REST endpoint
 - Implement caching mechanism (save to `data/towns.geojson`)
 - Load data into GeoPandas GeoDataFrame
@@ -44,7 +44,7 @@ This notebook will demonstrate a complete geospatial workflow using Vermont GIS 
 - Show sample of town names
 
 ### Step 3: Interactive Town Selector UI
-**Status**: Pending
+**Status**: Done
 - Create dropdown widget with town names
 - Display selected town information
 - Handle selection events
