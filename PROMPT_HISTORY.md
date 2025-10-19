@@ -333,9 +333,59 @@ User reported that the town selector interactive widget prints the selected town
 
 ---
 
+## Prompt #9
+**Date/Time**: 2025-10-17
+
+**User Request**:
+User selected "Initial Map Visualization" from PLAN.md and requested to create it.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), [PLAN.md](PLAN.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Implemented Step 4 from PLAN.md: Initial Map Visualization
+- Added 4 new cells to END of [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb):
+  - Markdown: Introduction to Step 4 explaining Folium maps, tile services, and CRS considerations
+  - Code: `create_town_map()` function that:
+    * Accepts optional town_name parameter or uses global selection
+    * Converts town boundary from Vermont State Plane to WGS84
+    * Calculates appropriate zoom level based on town size
+    * Creates Folium map centered on town
+    * Adds three basemap options (OpenStreetMap, Satellite, Topographic)
+    * Adds VT ANR Bedrock Geology as semi-transparent tile layer
+    * Styles town boundary with red outline, transparent fill
+    * Adds marker at town center with popup
+    * Includes layer controls for toggling
+  - Code: Map display cell that:
+    * Checks if town is selected
+    * Calls create_town_map() function
+    * Displays the interactive map
+    * Provides usage instructions
+  - Markdown: Code explanation breaking down:
+    * CRS transformation methodology
+    * Dynamic zoom level calculation
+    * Multiple basemap strategy
+    * Tile service URL pattern
+    * GeoJSON overlay styling
+    * Layer control functionality
+  - Markdown: Key takeaways section summarizing mapping concepts and best practices
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - added Step 4 with 4 cells at END)
+- `PROMPT_HISTORY.md` (modified - added Prompt #9 entry)
+
+**Token Usage**:
+- Input tokens: ~13,500
+- Output tokens: ~2,700
+- Total: ~16,200 tokens
+
+**Estimated Cost**: ~$0.08 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~70,600
-- **Total estimated cost**: ~$0.39 USD
+- **Total tokens used**: ~86,800
+- **Total estimated cost**: ~$0.47 USD
 
 ---
 
