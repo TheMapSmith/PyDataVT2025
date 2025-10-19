@@ -323,3 +323,120 @@ Interactive widgets transform static notebooks into dynamic tools:
 - **Educational**: Great for exploration and "what-if" scenarios
 - **Presentation-ready**: Professional appearance for demos and workshops
 - **Reusable**: Easy for others to adapt for their own data
+
+---
+
+## Key Takeaways - Interactive Mapping
+
+✅ **What we accomplished:**
+1. Created an interactive web map with Folium
+2. Transformed coordinates from Vermont State Plane to WGS84 for web display
+3. Added multiple basemap options (OpenStreetMap, Satellite, Topographic)
+4. Integrated VT ANR bedrock geology as a tile layer
+5. Styled and added town boundary as a GeoJSON overlay
+6. Implemented dynamic zoom levels based on town size
+7. Added layer controls for interactive toggling
+8. Placed a marker at the town center with popup
+
+💡 **Key Concepts:**
+- **CRS Transformation**: `.to_crs()` converts between coordinate systems
+- **Tile Services**: Load map data dynamically as you pan/zoom
+- **Layer Types**: Base layers (backgrounds) vs. overlay layers (data on top)
+- **GeoJSON Styling**: Custom colors, opacity, and borders for vector features
+- **Folium/Leaflet**: Python wrapper for creating Leaflet.js maps
+
+🎯 **Mapping Best Practices:**
+- Always convert to WGS84 (EPSG:4326) for web maps
+- Provide multiple basemap options for context
+- Use semi-transparent overlays so basemap shows through
+- Add layer controls for user exploration
+- Calculate appropriate zoom levels automatically
+- Include scale bars and attributions
+
+🔜 **Next Steps:**
+In the next section, we'll query the geology data for the selected town and perform spatial analysis!
+
+---
+
+
+
+### Understanding the Map Code
+
+Let's break down the key components of our mapping function:
+
+**1. Coordinate System Transformation**
+```python
+town_wgs84 = town_data.to_crs(WGS84)
+```
+Web maps require WGS84 (lat/lon), but our data is in Vermont State Plane (meters). GeoPandas handles the conversion automatically.
+
+**2. Dynamic Zoom Level**
+```python
+max_range = max(lat_range, lon_range)
+if max_range > 0.5:
+    zoom_start = 10
+```
+We calculate an appropriate zoom level based on town size. Larger towns need a lower zoom (zoomed out more) to fit in view.
+
+**3. Multiple Basemaps**
+We add three basemap options:
+- **OpenStreetMap**: Default, good for streets and features
+- **Satellite Imagery**: Aerial photos from Esri
+- **Topographic**: Shows elevation and terrain
+
+**4. Geology Tile Layer**
+```python
+geology_tile_url = f"{GEOLOGY_MAPSERVICE_URL}/tile/{{z}}/{{y}}/{{x}}"
+```
+The `{z}/{y}/{x}` placeholders are filled in by Leaflet as you pan/zoom. This allows the map to load only the tiles currently in view.
+
+**5. GeoJSON Overlay**
+```python
+folium.GeoJson(town_wgs84, style_function=style_function)
+```
+We add the town boundary as a vector overlay with custom styling (red outline, transparent fill).
+
+**6. Layer Controls**
+```python
+folium.LayerControl(position='topright', collapsed=False)
+```
+This creates the UI that lets users toggle layers on/off.
+
+### Try It Out!
+
+1. Select different towns from the dropdown above
+2. Re-run this cell to see the map for each town
+3. Use the layer control to toggle between basemaps
+4. Toggle the geology layer on/off to see the difference
+5. Click the marker to see the popup
+
+
+
+---
+
+## Step 4: Interactive Map Visualization
+
+Now we'll create an interactive map to visualize the selected town with the bedrock geology layer. This demonstrates:
+- Creating interactive web maps with Folium
+- Adding tile layers from map services
+- Converting coordinate systems (CRS transformation)
+- Styling GeoJSON features
+- Zooming to specific extents
+- Adding layer controls for interactivity
+
+### Understanding Folium Maps
+
+Folium creates interactive Leaflet.js maps in Python. Key concepts:
+- **Base layers**: Background maps (street maps, satellite, terrain, etc.)
+- **Tile layers**: Dynamic map services that load tiles as you pan/zoom
+- **Vector overlays**: GeoJSON features drawn on top of tiles
+- **Layer controls**: UI for toggling layers on/off
+- **CRS considerations**: Web maps use WGS84 (EPSG:4326), but our data is in Vermont State Plane
+
+### ArcGIS REST Tile Services
+
+We'll add the geology layer as a tile service. ArcGIS tile URLs follow this pattern:
+```
+{baseurl}/tile/{z}/{y}/{x}
+```
+Where `z` is zoom level, `y` is row, `x` is column in the tile grid.
