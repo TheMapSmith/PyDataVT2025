@@ -575,9 +575,60 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #15
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> i want to use ipyleaflet to add the mapserver layer to a simple interactive map. i have added a sample to the last cell with geopandas for getting map extent in vt state plane. use the patterns and ideas from that cell to write a new cell with ipyleaflet
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Analyzed user's sample ipyleaflet code in cell-12
+- Created new comprehensive ipyleaflet cell inserted before cell-12:
+  - Created `create_interactive_map()` function that:
+    * Accepts optional town_name parameter or uses global selection
+    * Converts town data from VT State Plane to WGS84 for ipyleaflet
+    * Creates ipyleaflet.Map centered on selected town
+    * Adds OpenStreetMap basemap layer
+    * Creates ImageOverlay for dynamic geology layer from ArcGIS MapServer
+    * Adds town boundary as GeoJSON layer with styling and hover effects
+    * Implements `handle_interaction()` callback that:
+      - Gets current map bounds in WGS84
+      - Uses pyproj transformer to convert bounds to VT State Plane
+      - Constructs ArcGIS export URL with projected bounds
+      - Updates ImageOverlay with new URL on pan/zoom
+    * Links callback to map bounds changes for dynamic updates
+    * Adds LayersControl for toggling layers
+    * Fits map to town bounds
+    * Triggers initial layer load
+  - Display code that checks for selected town and creates map
+- Updated [requirements.txt](requirements.txt):
+  - Added `ipyleaflet>=0.18.0` to visualization dependencies
+- Key educational improvements:
+  * Demonstrates coordinate transformation for dynamic map layers
+  * Shows how to use pyproj transformer for real-time reprojection
+  * Illustrates ipyleaflet ImageOverlay pattern for MapServer integration
+  * Includes GeoJSON layer with interactive styling
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - inserted new ipyleaflet cell before cell-12)
+- `requirements.txt` (modified - added ipyleaflet>=0.18.0)
+- `PROMPT_HISTORY.md` (modified - added Prompt #15 entry)
+
+**Token Usage**:
+- Input tokens: ~112,500
+- Output tokens: ~3,200
+- Total: ~115,700 tokens
+
+**Estimated Cost**: ~$0.38 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~426,200
-- **Total estimated cost**: ~$1.62 USD
+- **Total tokens used**: ~541,900
+- **Total estimated cost**: ~$2.00 USD
 
 ---
 

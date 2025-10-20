@@ -16,6 +16,7 @@ fiona>=1.9.0
 
 # Visualization and mapping
 folium>=0.15.0
+ipyleaflet>=0.18.0
 matplotlib>=3.8.0
 
 # Data manipulation
