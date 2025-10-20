@@ -383,9 +383,44 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #10
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> the map should add a map service URL with Leaflet's esri plugin. the selected town should draw on the map
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Updated `create_town_map()` function in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) (cell-1):
+  - Added Esri Leaflet JavaScript plugin integration via CDN (esri-leaflet@3.0.12)
+  - Replaced tile layer approach with `L.esri.dynamicMapLayer()` for proper ArcGIS MapServer rendering
+  - Enhanced town boundary visualization:
+    * Changed fill color to light red (#ffcccc) with 20% opacity for visibility
+    * Changed border to dark red (#cc0000) with 3px weight
+    * Added highlight effect on hover (darker red with 40% opacity)
+    * Added interactive tooltip and popup with town name and area
+  - Added `m.fit_bounds()` to automatically zoom map to show full town boundary with padding
+  - Updated function documentation to reflect Esri Leaflet plugin usage
+  - Added console message confirming town boundary is drawn with hover highlight
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - updated cell-1 with Esri Leaflet integration and improved town boundary rendering)
+- `PROMPT_HISTORY.md` (modified - added Prompt #10 entry)
+
+**Token Usage**:
+- Input tokens: ~30,000
+- Output tokens: ~3,000
+- Total: ~33,000 tokens
+
+**Estimated Cost**: ~$0.14 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~86,800
-- **Total estimated cost**: ~$0.47 USD
+- **Total tokens used**: ~119,800
+- **Total estimated cost**: ~$0.61 USD
 
 ---
 
