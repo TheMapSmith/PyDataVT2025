@@ -535,9 +535,49 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #14
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> the source data is fetched as geojson and stashed as town.json. you were using set_crs before, but i don't think that projects the dataframe. i'm not sure when you loaded it from cache it projected. i tried some things bout bounds[] still returns lat/long
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Identified critical bug: `to_crs()` was being called but result not assigned back to `gdf`
+- Fixed `fetch_town_boundaries()` function in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) (cell-3):
+  - **Key fix**: Changed `gdf.to_crs(VT_STATE_PLANE)` to `gdf = gdf.to_crs(VT_STATE_PLANE)`
+  - Added educational comments explaining:
+    * `set_crs()` only sets metadata, doesn't transform coordinates
+    * `to_crs()` **returns** a new GeoDataFrame (doesn't modify in place!)
+    * GeoJSON spec requires WGS84, so cached data is always in lat/lon
+  - Updated docstring to clarify function returns data in VT State Plane
+  - Added console output showing transformation: "✓ Transformed to NAD83 / Vermont"
+  - Applied fix to both cache loading and API fetching code paths
+- Updated configuration cell (cell-2):
+  - Changed CRS constants back to "EPSG:####" format for consistency
+  - Added comment that GeoPandas accepts both formats
+- Educational improvement: Function now demonstrates the critical difference between:
+  * `set_crs()` - just labels the data's existing coordinates
+  * `to_crs()` - actually transforms coordinates to new system
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - fixed cell-3 coordinate transformation, updated cell-2 EPSG format)
+- `PROMPT_HISTORY.md` (modified - added Prompt #14 entry)
+
+**Token Usage**:
+- Input tokens: ~98,100
+- Output tokens: ~1,500
+- Total: ~99,600 tokens
+
+**Estimated Cost**: ~$0.32 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~326,600
-- **Total estimated cost**: ~$1.30 USD
+- **Total tokens used**: ~426,200
+- **Total estimated cost**: ~$1.62 USD
 
 ---
 
