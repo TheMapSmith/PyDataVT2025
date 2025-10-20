@@ -418,9 +418,48 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #11
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> i want to dramatically simplify the map display for the selected town. use the REST endpoint for "export" to make an image. see the comment in the last jupyter cell for an example URL and querystring
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Dramatically simplified map visualization by replacing complex Folium/Leaflet approach with ArcGIS REST "export" endpoint
+- Completely rewrote `create_town_map()` function in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) (cell-11):
+  - Removed all Folium, Leaflet, and JavaScript dependencies
+  - Implemented direct REST API call to MapServer/export endpoint
+  - Calculates bounding box from selected town with 10% padding
+  - Constructs export URL with parameters:
+    * bbox: Town bounds in Vermont State Plane coordinates
+    * bboxSR/imageSR: 32145 (Vermont State Plane)
+    * size: 800x600 pixels
+    * format: PNG32 with transparency
+    * layers: show:165 (Bedrock geology layer)
+  - Fetches static map image via HTTP request
+  - Displays image directly in notebook using IPython.display.Image
+  - Added informative console output with bbox and image details
+- Result is a much simpler, faster, and more educational approach showing direct REST API usage
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - replaced cell-11 with simplified export-based map)
+- `PROMPT_HISTORY.md` (modified - added Prompt #11 entry)
+
+**Token Usage**:
+- Input tokens: ~49,000
+- Output tokens: ~1,700
+- Total: ~50,700 tokens
+
+**Estimated Cost**: ~$0.17 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~119,800
-- **Total estimated cost**: ~$0.61 USD
+- **Total tokens used**: ~170,500
+- **Total estimated cost**: ~$0.78 USD
 
 ---
 
