@@ -457,9 +457,47 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #12
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> i need to add a pyproj transformer object to convert from wgs84 to vt state plane 32145. i have some pieces of this built out in the last cell
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Observed user had started building pyproj Transformer in cell-12
+- Moved transformer setup to configuration cell (cell-2) for better organization:
+  - Created CRS objects for WGS84 (EPSG:4326) and VT State Plane (EPSG:32145)
+  - Created `transformer_wgs84_to_vtsp` using `Transformer.from_crs()` with `always_xy=True` parameter
+  - Created reverse transformer `transformer_vtsp_to_wgs84` for bidirectional conversions
+  - Added informative print statements documenting both transformers
+  - Documented that `always_xy=True` means input order is (longitude, latitude)
+- Replaced cell-12 with educational demonstration cell:
+  - Shows example coordinate transformation using Burlington, VT coordinates
+  - Demonstrates forward transformation (WGS84 → VT State Plane)
+  - Demonstrates reverse transformation (VT State Plane → WGS84)
+  - Includes verification step to confirm round-trip accuracy
+  - Provides clear usage notes for learners
+- Result: Clean, reusable transformer objects available globally for coordinate conversions
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - updated cell-2 with transformers, replaced cell-12 with demo)
+- `PROMPT_HISTORY.md` (modified - added Prompt #12 entry)
+
+**Token Usage**:
+- Input tokens: ~66,500
+- Output tokens: ~2,200
+- Total: ~68,700 tokens
+
+**Estimated Cost**: ~$0.23 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~170,500
-- **Total estimated cost**: ~$0.78 USD
+- **Total tokens used**: ~239,200
+- **Total estimated cost**: ~$1.01 USD
 
 ---
 
