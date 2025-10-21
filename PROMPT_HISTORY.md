@@ -862,9 +862,56 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #22
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> i want to color-code the charts based on the color in the map. the REST endpoint gives an esri renderer object for each CODE. instructions are in the last cell.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Created new cell-16 for fetching and caching official geology colors:
+  * `fetch_geology_colors()` function queries MapServer REST API
+  * Extracts color information from `drawingInfo.renderer.uniqueValueInfos[]`
+  * Each CODE gets mapped to RGBA color array [r, g, b, alpha]
+  * Implements caching to `geology_colors.json` to avoid repeated API calls
+  * `rgba_to_hex()` helper converts RGBA to hex format for web/leaflet
+  * `rgba_to_mpl()` helper converts RGBA to matplotlib format (0-1 range)
+  * Displays sample color mappings
+- Updated cell-14 (clipping and map) to use official colors:
+  * Created `style_feature_with_color()` callback function
+  * Looks up CODE for each feature and applies corresponding color
+  * Both full and clipped geology layers now use official MapServer colors
+  * Fallback to gray if CODE not found in color mapping
+  * Updated layer names and legend to indicate official colors
+- Updated cell-15 (charts) to use official colors:
+  * Charts now use same colors as map for each CODE
+  * Bar chart: Official colors with black edges
+  * Pie chart: Official colors matching map display
+  * Table includes hex color code for each CODE
+  * Updated titles to indicate "Official MapServer Colors"
+  * Added note that colors match MapServer legend
+- Removed old instructional cell-16 (now cell-17)
+- Result: Complete color consistency across map, charts, and table
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - added cell-16 for colors, updated cells 14 & 15, deleted old cell-16)
+- `PROMPT_HISTORY.md` (modified - added Prompt #22 entry)
+
+**Token Usage**:
+- Input tokens: ~92,000
+- Output tokens: ~7,000
+- Total: ~99,000 tokens
+
+**Estimated Cost**: ~$0.38 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,217,800
-- **Total estimated cost**: ~$4.33 USD
+- **Total tokens used**: ~1,316,800
+- **Total estimated cost**: ~$4.71 USD
 
 ---
 
