@@ -776,9 +776,51 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #20
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> the exported GeoJSON is not WGS84. fix that for the cache saving.
+>
+> i want to see a chart summarizing area by CODE
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Fixed `fetch_geology_geojson()` function in cell-13:
+  * Moved cache saving to occur BEFORE transforming to VT State Plane
+  * Cache files now correctly saved in WGS84 (EPSG:4326) to comply with GeoJSON specification
+  * Added documentation note about cache format
+  * Added display of available columns in output
+  * Fixed order of operations: fetch → save cache (WGS84) → transform (VT State Plane) → return
+- Created new cell-14 with area analysis and visualization:
+  * Calculates area in km² for each geology feature (from VT State Plane geometry)
+  * Groups by CODE field and sums areas
+  * Displays formatted table with CODE, area (km²), and percentage
+  * Creates side-by-side visualizations:
+    - Horizontal bar chart showing area by CODE with value labels
+    - Pie chart showing distribution percentages
+  * Both charts titled with selected town name
+  * Color-coded using matplotlib Set3 colormap
+  * Includes summary statistics (unique codes count, total area)
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - fixed cell-13 cache saving, added cell-14 with area chart)
+- `PROMPT_HISTORY.md` (modified - added Prompt #20 entry)
+
+**Token Usage**:
+- Input tokens: ~61,000
+- Output tokens: ~3,500
+- Total: ~64,500 tokens
+
+**Estimated Cost**: ~$0.22 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,076,800
-- **Total estimated cost**: ~$3.85 USD
+- **Total tokens used**: ~1,141,300
+- **Total estimated cost**: ~$4.07 USD
 
 ---
 
