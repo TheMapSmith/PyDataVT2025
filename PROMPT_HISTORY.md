@@ -733,9 +733,52 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #19
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> i want to use the query endpoint for the geology REST endpoint to export a geojson of the map extent. use the town extent in state plane coordinates and have the query endpoint return GeoJSON of all shapes that intersect the town bbox. please be sure to re-read the code because i have made quite a few changes.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Created new cell in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) after cell-12
+- Implemented `fetch_geology_geojson()` function that:
+  * Uses the ArcGIS REST API `/query` endpoint (not `/export`)
+  * Takes town name as parameter or uses global selection
+  * Gets town bounding box in Vermont State Plane coordinates (meters)
+  * Constructs query with parameters:
+    - geometry: Town bbox as comma-separated string
+    - geometryType: esriGeometryEnvelope
+    - inSR: 32145 (Vermont State Plane)
+    - spatialRel: esriSpatialRelIntersects (finds all features intersecting bbox)
+    - outFields: * (all attributes)
+    - returnGeometry: true
+    - f: geojson (returns actual GeoJSON, not image)
+  * Fetches GeoJSON from REST endpoint
+  * Converts to GeoDataFrame and transforms to VT State Plane
+  * Implements caching to avoid repeated API calls
+  * Displays summary statistics (feature count, total area, unique geology units)
+- Added execution code that queries geology data for selected town
+- Function creates a `geology_gdf` GeoDataFrame variable with the results
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - added new cell-13 with query endpoint function)
+- `PROMPT_HISTORY.md` (modified - added Prompt #19 entry)
+
+**Token Usage**:
+- Input tokens: ~45,000
+- Output tokens: ~3,000
+- Total: ~48,000 tokens
+
+**Estimated Cost**: ~$0.16 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,028,800
-- **Total estimated cost**: ~$3.69 USD
+- **Total tokens used**: ~1,076,800
+- **Total estimated cost**: ~$3.85 USD
 
 ---
 
