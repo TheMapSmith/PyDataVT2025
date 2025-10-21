@@ -947,9 +947,44 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #24
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> make a small tweak to the control panel cell. have the clipped geometry layer in the interactive map show the CODE on hover. also add a hover effect
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb:cell-8) per start-of-prompt workflow
+- Modified the `on_clip_visualize_click` function in cell-8 to add interactive hover functionality:
+  * Created `enhanced_hover_style` function with white border (5px thick) and increased opacity (0.9) on hover
+  * Added HTML widget (`code_display`) that displays CODE and LITH properties when hovering over clipped geology features
+  * Implemented `on_hover_handler` callback that updates the display widget with:
+    - Color swatch showing the official geology color for the CODE
+    - CODE value
+    - LITH (lithology) value
+  * Attached hover event handlers to the clipped geology layer using `on_hover()` and `on_msg()` methods
+  * Changed map layout to display map and info widget side by side using `widgets.HBox`
+- Enhanced visual feedback with prominent white border on hover (weight: 5) and higher fill opacity (0.9)
+- Updated print statements to inform users about the new hover feature
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - enhanced cell-8 control panel with hover display)
+- `PROMPT_HISTORY.md` (modified - added Prompt #24 entry)
+
+**Token Usage**:
+- Input tokens: ~66,000
+- Output tokens: ~11,000
+- Total: ~77,000 tokens
+
+**Estimated Cost**: ~$0.36 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,395,800
-- **Total estimated cost**: ~$5.08 USD
+- **Total tokens used**: ~1,472,800
+- **Total estimated cost**: ~$5.44 USD
 
 ---
 
