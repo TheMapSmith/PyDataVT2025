@@ -1051,9 +1051,59 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #26
+**Date/Time**: 2025-10-21
+
+**User Request**:
+> i am giving a presentation on mapping with python and i want to take a poll of the audience for how familiar they are with spatial data and python. in geo-experience.ipynb make a form i can fill in for three levels of familiarity and generate a chart when done
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [requirements.txt](requirements.txt) per start-of-prompt workflow
+- Created [geo-experience.ipynb](geo-experience.ipynb) - a new interactive audience polling notebook
+- Implemented complete interactive form with:
+  * Dropdown selector for three experience levels (Beginner, Intermediate, Advanced)
+  * Text input field for entering counts
+  * "Add Response" button (green) to record responses
+  * "Reset All" button (red) to clear all data
+  * "Generate Chart" button (blue) to visualize results
+  * Status area showing running totals after each entry
+  * Output area for displaying charts
+- Created visualization functionality that generates:
+  * Side-by-side bar chart and pie chart
+  * Color-coded by experience level (Red=Beginner, Orange=Intermediate, Green=Advanced)
+  * Count labels on bars for easy reading
+  * Percentage labels on pie chart
+  * Summary statistics table with counts and percentages
+- Added educational content:
+  * Clear usage instructions in opening markdown
+  * Descriptions of each experience level
+  * Explanation of how the form works (widgets, event handlers, state management)
+  * Workflow steps and tips for using the form
+- Notebook features:
+  * Accumulative counting (can add multiple entries per level)
+  * Real-time status updates showing current totals
+  * Professional presentation-ready visualizations
+  * Reset functionality to start over
+  * No new library dependencies (uses existing ipywidgets and matplotlib)
+
+**Files Modified/Created**:
+- `geo-experience.ipynb` (created - 4 cells with complete interactive polling form)
+- `PROMPT_HISTORY.md` (modified - added Prompt #26 entry)
+
+**Token Usage**:
+- Input tokens: ~48,600
+- Output tokens: ~2,500
+- Total: ~51,100 tokens
+
+**Estimated Cost**: ~$0.18 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,545,800
-- **Total estimated cost**: ~$5.78 USD
+- **Total tokens used**: ~1,596,900
+- **Total estimated cost**: ~$5.96 USD
 
 ---
 
