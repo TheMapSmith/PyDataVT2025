@@ -1010,9 +1010,50 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #25
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> the hover handler isn't working. no errors, but nothing happens. also the highlighting isn't very bold its hard to see any change. you can choose an alternate hover -> CODE implementation if it is easier such as mouseover hovers on top of the map
+
+**Actions Taken**:
+- Completely redesigned the hover/click interaction for better visibility and functionality:
+  * **Removed non-functional hover info display widget** - The on_hover() approach wasn't working properly
+  * **Implemented click-to-popup functionality** - Click features to see CODE information in a styled popup
+  * **Dramatically improved hover visibility**:
+    - Changed to bright yellow (`#ffff00`) border on hover (was white)
+    - Increased hover border weight to 6px (was 5px)
+    - Increased fill opacity to 0.95 (was 0.9)
+  * **Improved default styling**:
+    - Added dark borders (`#333333`) to features for better definition
+    - Increased default fill opacity to 0.7 (was 0.6)
+- Created ipyleaflet.Popup with styled HTML content showing:
+  * Large color swatch (40x40px)
+  * CODE value
+  * LITH value
+  * Hex color code
+- Added `on_click()` handler to clipped geology layer
+- Popup appears at click location with auto-close functionality
+- Updated user instructions to reflect new interaction model
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - improved cell-8 interactivity)
+- `PROMPT_HISTORY.md` (modified - added Prompt #25 entry)
+
+**Token Usage**:
+- Input tokens: ~26,000
+- Output tokens: ~11,000
+- Total: ~37,000 tokens
+
+**Estimated Cost**: ~$0.17 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,508,800
-- **Total estimated cost**: ~$5.61 USD
+- **Total tokens used**: ~1,545,800
+- **Total estimated cost**: ~$5.78 USD
 
 ---
 
