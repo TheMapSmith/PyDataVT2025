@@ -1101,9 +1101,70 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #27
+**Date/Time**: 2025-10-21
+
+**User Request**:
+> look at the two CSV in this folder and make two different cells charting and summarizing the API Tokens and Costs shown in the sheets
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md) and [PROMPT_HISTORY.md](PROMPT_HISTORY.md) per start-of-prompt workflow
+- Identified two CSV files in project root:
+  * `claude_api_tokens.csv` - Token usage data by date, model, and token type
+  * `claude_api_cost.csv` - Cost data in USD by date, model, and token type
+- Found empty `api-costs.ipynb` file and recreated it with comprehensive analysis
+- Created complete notebook with 8 cells:
+  * **Cell 1**: Markdown introduction explaining the notebook purpose and overview
+  * **Cell 2**: Library imports (pandas, matplotlib, numpy, FuncFormatter)
+  * **Cell 3**: Markdown section explaining token types and their meanings
+  * **Cell 4**: Token usage data loading, summary statistics, and text analysis including:
+    - Raw data display
+    - Total tokens by type (no cache, cache write, cache read, output)
+    - Token totals by model (Haiku 4.5 vs Sonnet 4.5)
+    - Percentage breakdowns
+  * **Cell 5**: Token usage visualizations with 4 charts:
+    - Stacked bar chart showing token usage over time by type
+    - Pie chart showing token distribution by type
+    - Horizontal bar chart showing total tokens by model
+    - Grouped bar chart showing cache write vs read efficiency
+  * **Cell 6**: Markdown section explaining cost structure and pricing models
+  * **Cell 7**: Cost data loading, summary statistics, and text analysis including:
+    - Raw cost data display
+    - Total cost calculation
+    - Cost breakdown by model
+    - Cost breakdown by token type
+    - Daily cost summary
+  * **Cell 8**: Cost visualizations with 4 charts:
+    - Stacked bar chart showing daily costs by model
+    - Pie chart showing total cost distribution by model
+    - Horizontal bar chart showing cost by token type
+    - Line chart showing cumulative costs over time
+  * **Cell 9**: Markdown with key insights and conclusions
+- All visualizations include:
+  * Professional formatting with bold titles and axis labels
+  * Value labels on bars/points for easy reading
+  * Appropriate color schemes for clarity
+  * Gridlines for better readability
+  * Proper number formatting (millions for tokens, USD for costs)
+
+**Files Modified/Created**:
+- `api-costs.ipynb` (created - comprehensive notebook with 9 cells for token and cost analysis)
+- `PROMPT_HISTORY.md` (modified - added Prompt #27 entry)
+
+**Token Usage**:
+- Input tokens: ~49,000
+- Output tokens: ~5,300
+- Total: ~54,300 tokens
+
+**Estimated Cost**: ~$0.19 USD
+
+**Commit SHA**: 1f8d3c6
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,596,900
-- **Total estimated cost**: ~$5.96 USD
+- **Total tokens used**: ~1,651,200
+- **Total estimated cost**: ~$6.15 USD
 
 ---
 
