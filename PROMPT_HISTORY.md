@@ -818,9 +818,53 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #21
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> you should clip the downloaded GeoJSON to the town boundary before calculating area. display the full dataset on a basic leaflet map with 50% transparency. add the clipped result to the same map at 50% transparency too. make the charts driven by the clipped dataset
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Created new cell-14 for clipping and map visualization:
+  * Uses `gpd.clip()` to clip geology features to town boundary
+  * Both datasets in Vermont State Plane for accurate clipping
+  * Displays area comparison statistics:
+    - Town boundary area
+    - Full geology extent area
+    - Clipped geology area
+    - Reduction amount and percentage
+  * Creates interactive ipyleaflet map with three layers:
+    - Blue layer: Full geology extent (bbox query results) at 50% opacity
+    - Green layer: Clipped geology (within town boundary) at 50% opacity
+    - Red outline: Town boundary
+  * All layers toggleable via layer control
+  * Stores clipped data in `geology_clipped_gdf` variable for downstream use
+- Updated cell-15 (formerly cell-14) to use clipped data:
+  * Changed title to indicate "Clipped to Town Boundary"
+  * Charts now driven by `geology_clipped_gdf` instead of full dataset
+  * Bar chart color changed to green to match map
+  * Updated labels and titles to reflect clipped data
+  * Shows accurate area analysis within town boundary only
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - added cell-14 with clipping and map, updated cell-15 for clipped data)
+- `PROMPT_HISTORY.md` (modified - added Prompt #21 entry)
+
+**Token Usage**:
+- Input tokens: ~72,000
+- Output tokens: ~4,500
+- Total: ~76,500 tokens
+
+**Estimated Cost**: ~$0.26 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,141,300
-- **Total estimated cost**: ~$4.07 USD
+- **Total tokens used**: ~1,217,800
+- **Total estimated cost**: ~$4.33 USD
 
 ---
 
