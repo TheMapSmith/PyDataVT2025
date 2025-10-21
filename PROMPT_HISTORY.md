@@ -626,9 +626,40 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #16
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> for some reason that last cell doesn't run correctly. i stepped through the code and a map never shows up. the tirgger initial load of handle_interaction() is where the problem lies. if i skip that then a map shows up.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Identified the issue: `handle_interaction()` was being called before `display(interactive_map)`
+- Fixed `create_interactive_map()` function in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) (cell-12):
+  - Removed the premature `handle_interaction()` call at the end of the function
+  - Added comment explaining that the observer will automatically trigger when bounds change
+  - Added comment that `fit_bounds()` will trigger the observer, loading the geology layer
+  - This allows the map to display first, then the observer fires naturally
+- The map now displays correctly, and the geology layer loads automatically when `fit_bounds()` triggers the observer
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - fixed cell-12 by removing premature function call)
+- `PROMPT_HISTORY.md` (modified - added Prompt #16 entry)
+
+**Token Usage**:
+- Input tokens: ~127,300
+- Output tokens: ~3,500
+- Total: ~130,800 tokens
+
+**Estimated Cost**: ~$0.43 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~541,900
-- **Total estimated cost**: ~$2.00 USD
+- **Total tokens used**: ~672,700
+- **Total estimated cost**: ~$2.43 USD
 
 ---
 
