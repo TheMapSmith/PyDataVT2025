@@ -657,9 +657,40 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #17
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> now the map shows up but there is an error. TypeError: create_interactive_map.<locals>.handle_interaction() takes 0 positional arguments but 1 was given. the error is in the current output
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Identified the issue: `handle_interaction()` had signature `**kwargs` which doesn't capture positional arguments
+- ipyleaflet's `observe()` passes a `change` dictionary as the first positional argument to callbacks
+- Fixed `handle_interaction()` function in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) (cell-12):
+  - Changed function signature from `def handle_interaction(**kwargs):` to `def handle_interaction(change):`
+  - Added proper parameter documentation explaining the change dict
+  - Function now properly accepts the positional argument from the observer
+- The map should now work without errors and update the geology layer on pan/zoom
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - fixed cell-12 function signature)
+- `PROMPT_HISTORY.md` (modified - added Prompt #17 entry)
+
+**Token Usage**:
+- Input tokens: ~144,000
+- Output tokens: ~3,300
+- Total: ~147,300 tokens
+
+**Estimated Cost**: ~$0.48 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~672,700
-- **Total estimated cost**: ~$2.43 USD
+- **Total tokens used**: ~820,000
+- **Total estimated cost**: ~$2.91 USD
 
 ---
 
