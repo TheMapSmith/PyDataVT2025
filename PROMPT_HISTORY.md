@@ -688,9 +688,54 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #18
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> i want to add a dynamic legend for the map contents. i've added some notes in a comment of the last cell
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Reviewed user's notes in cell-13 about using USGS NGMDB legend API
+- Created legend functionality in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) (cell-13):
+  - Created `fetch_legend_for_bounds()` function that:
+    * Takes WGS84 bounding box coordinates (south, west, north, east)
+    * Constructs API URL for USGS National Geologic Map Database legend service
+    * Fetches and returns legend data as JSON
+    * Handles errors gracefully
+  - Created `create_legend_html()` function that:
+    * Takes legend items array from API
+    * Generates styled HTML for compact legend display
+    * Shows colored squares, abbreviation codes, names, and descriptions
+    * Uses scrollable container with max-height for long legends
+    * Applies proper styling with colors from API rgba values
+- Updated interactive map function in [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) (cell-12):
+  - Added widgets.HTML legend widget (350px x 600px, scrollable)
+  - Updated `handle_interaction()` to fetch and update legend on map bounds change
+  - Changed return type to widgets.HBox containing map and legend side by side
+  - Legend updates dynamically as user pans/zooms the map
+  - Updated docstring to reflect new return type and legend functionality
+- Fixed cell-10 to use `widgets.Dropdown` and `widgets.Output` consistently with imports
+- Result: Interactive map now displays with dynamic legend showing geology types visible in current extent
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - added legend functions in cell-13, updated map in cell-12, fixed cell-10)
+- `PROMPT_HISTORY.md` (modified - added Prompt #18 entry)
+
+**Token Usage**:
+- Input tokens: ~200,000
+- Output tokens: ~8,800
+- Total: ~208,800 tokens
+
+**Estimated Cost**: ~$0.78 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~820,000
-- **Total estimated cost**: ~$2.91 USD
+- **Total tokens used**: ~1,028,800
+- **Total estimated cost**: ~$3.69 USD
 
 ---
 
