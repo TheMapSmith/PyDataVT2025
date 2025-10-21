@@ -982,9 +982,37 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #24 (Fix)
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> TraitError: The 'hover_style' trait of a GeoJSON instance expected a dict, not the function 'enhanced_hover_style'.
+
+**Actions Taken**:
+- Fixed the TraitError by converting `enhanced_hover_style` from a function to a static dictionary
+- The issue was that ipyleaflet's GeoJSON `hover_style` parameter requires a dict, not a callable
+- Changed from: `def enhanced_hover_style(feature)` to: `enhanced_hover_style = {'color': '#ffffff', 'weight': 5, 'fillOpacity': 0.9}`
+- The hover handler (`on_hover_handler`) still works correctly to update the info display widget
+- Static hover style now provides consistent visual feedback with white border and increased opacity
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - fixed cell-8 hover_style parameter)
+- `PROMPT_HISTORY.md` (modified - added fix entry)
+
+**Token Usage**:
+- Input tokens: ~26,000
+- Output tokens: ~10,000
+- Total: ~36,000 tokens
+
+**Estimated Cost**: ~$0.17 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,472,800
-- **Total estimated cost**: ~$5.44 USD
+- **Total tokens used**: ~1,508,800
+- **Total estimated cost**: ~$5.61 USD
 
 ---
 
