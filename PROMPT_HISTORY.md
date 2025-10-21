@@ -909,9 +909,47 @@ User selected "Initial Map Visualization" from PLAN.md and requested to create i
 
 ---
 
+## Prompt #23
+**Date/Time**: 2025-10-20
+
+**User Request**:
+> this notebook has a bunch of functionality, but it all starts with a drop-down selector. i want the dropdown selector cell to have additional buttons to trigger all additional functions in the script. if possible it would be nice to see all the return outputs in one place.
+
+**Actions Taken**:
+- Re-read [CLAUDE.md](CLAUDE.md), [PROMPT_HISTORY.md](PROMPT_HISTORY.md), and [vermont_geology_workshop.ipynb](vermont_geology_workshop.ipynb) per start-of-prompt workflow
+- Completely redesigned cell-10 to create a comprehensive interactive control panel:
+  * **Town Selector Dropdown**: Select Vermont towns from dropdown
+  * **Button: Fetch Geology Data** (📦): Queries geology GeoJSON from ArcGIS REST API and caches locally
+  * **Button: Static Map** (🗺️): Generates static map image using MapServer export endpoint
+  * **Button: Interactive Map** (🌍): Creates interactive ipyleaflet map with dynamic geology layer
+  * **Button: Clip & Visualize** (✂️): Clips geology data to town boundary and displays both on colored map
+  * **Button: Area Analysis** (📊): Generates bar charts and pie charts showing geology distribution by CODE
+  * **Button: RUN ALL ANALYSIS** (🚀): Executes all analysis steps in sequence
+  * **Unified Output Panel**: Single scrollable output area where all results appear
+- All buttons use a shared `output_panel` widget to display results in one place
+- Buttons automatically check for prerequisites and fetch data if needed
+- Each function includes clear status messages and progress indicators
+- Color-coded buttons with tooltips for better UX
+- Educational design demonstrates best practices for interactive notebook workflows
+
+**Files Modified/Created**:
+- `vermont_geology_workshop.ipynb` (modified - replaced cell-10 with comprehensive control panel)
+- `PROMPT_HISTORY.md` (modified - added Prompt #23 entry)
+
+**Token Usage**:
+- Input tokens: ~68,000
+- Output tokens: ~11,000
+- Total: ~79,000 tokens
+
+**Estimated Cost**: ~$0.37 USD
+
+**Commit SHA**: (pending)
+
+---
+
 ## Token Usage Summary
-- **Total tokens used**: ~1,316,800
-- **Total estimated cost**: ~$4.71 USD
+- **Total tokens used**: ~1,395,800
+- **Total estimated cost**: ~$5.08 USD
 
 ---
 
