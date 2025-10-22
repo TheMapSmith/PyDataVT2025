@@ -1,11 +1,11 @@
-usage_date_utc,model_version,workspace,usage_input_tokens_no_cache,usage_input_tokens_cache_write_5m,usage_input_tokens_cache_read,usage_output_tokens
-10/17/2025,claude-haiku-4-5-20251001,Claude Code,23810,0,0,1186
-10/17/2025,claude-sonnet-4-5-20250929,Claude Code,112,62633,683023,13790
-10/18/2025,claude-haiku-4-5-20251001,Claude Code,24335,0,0,717
-10/18/2025,claude-sonnet-4-5-20250929,Claude Code,123,316608,3123452,23400
-10/19/2025,claude-haiku-4-5-20251001,Claude Code,5594,0,0,565
-10/19/2025,claude-sonnet-4-5-20250929,Claude Code,35,121364,1290894,6038
-10/20/2025,claude-haiku-4-5-20251001,Claude Code,36212,0,0,4090
-10/20/2025,claude-sonnet-4-5-20250929,Claude Code,282,477519,6400565,31969
-10/21/2025,claude-haiku-4-5-20251001,Claude Code,39412,0,0,3735
-10/21/2025,claude-sonnet-4-5-20250929,Claude Code,7843,1649833,13113233,89783
+usage_date_utc,model_version,workspace,usage_type,context_window,usage_input_tokens_no_cache,usage_input_tokens_cache_write_5m,usage_input_tokens_cache_read,usage_output_tokens
+10/17/2025,claude-haiku-4-5-20251001,Claude Code,standard,≤ 200k,23810,0,0,1186
+10/17/2025,claude-sonnet-4-5-20250929,Claude Code,standard,≤ 200k,112,62633,683023,13790
+10/18/2025,claude-haiku-4-5-20251001,Claude Code,standard,≤ 200k,24335,0,0,717
+10/18/2025,claude-sonnet-4-5-20250929,Claude Code,standard,≤ 200k,123,316608,3123452,23400
+10/19/2025,claude-haiku-4-5-20251001,Claude Code,standard,≤ 200k,5594,0,0,565
+10/19/2025,claude-sonnet-4-5-20250929,Claude Code,standard,≤ 200k,35,121364,1290894,6038
+10/20/2025,claude-haiku-4-5-20251001,Claude Code,standard,≤ 200k,36212,0,0,4090
+10/20/2025,claude-sonnet-4-5-20250929,Claude Code,standard,≤ 200k,282,477519,6400565,31969
+10/21/2025,claude-haiku-4-5-20251001,Claude Code,standard,≤ 200k,69494,0,0,6298
+10/21/2025,claude-sonnet-4-5-20250929,Claude Code,standard,≤ 200k,8545,1747322,14636657,122093
