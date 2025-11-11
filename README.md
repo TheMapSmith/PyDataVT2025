@@ -1,3 +1,7 @@
+### Follow Along
+
+You can explore this notebook [in a Google Colab workspace here]([url](https://colab.research.google.com/drive/16_6bXi7-KBazk0v4eDrR2Phe-fOEDJwf)).
+
 ### Executive Summary
 
 This notebook demonstrates an end-to-end GIS workflow conducted entirely within a Python Jupyter environment. It uses open-source libraries to perform many common spatial tasks tasks. The notebook starts by showing you the different ways you can access GIS data and do initial data exploration. Then we start working with an ArcGIS REST endpoint to capture and review data. Finally, we combine spatial data (town boundaries) with the data from the API to generate summary information.
