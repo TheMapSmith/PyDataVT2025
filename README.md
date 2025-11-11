@@ -1,6 +1,6 @@
 ### Follow Along
 
-You can explore this notebook [in a Google Colab workspace here]([url](https://colab.research.google.com/drive/16_6bXi7-KBazk0v4eDrR2Phe-fOEDJwf)).
+You can explore this notebook [in a Google Colab Workspace here](https://colab.research.google.com/drive/16_6bXi7-KBazk0v4eDrR2Phe-fOEDJwf).
 
 ### Executive Summary
 
